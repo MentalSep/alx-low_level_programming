@@ -6,7 +6,7 @@ int main(void)
 
 	while (*str)
 	{
-		write(2, str, 1);
+		write(STDERR_FILENO, str, 1);
 		str++;
 	}
 	return (1);
