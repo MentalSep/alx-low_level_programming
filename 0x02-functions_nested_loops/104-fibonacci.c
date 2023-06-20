@@ -10,11 +10,11 @@
 int main(void)
 {
 	int i;
-	unsigned long long cur = 1, prev = 1, next;
+	unsigned long cur = 1, prev = 1, next;
 
 	for (i = 0; i < 50; i++)
 	{
-		printf("%lld%s", cur, (i != 49) ? ", " : "\n");
+		printf("%ld%s", cur, (i != 49) ? ", " : "\n");
 		next = cur + prev;
 		prev = cur;
 		cur = next;
