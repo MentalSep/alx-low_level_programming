@@ -1,7 +1,10 @@
 #include "main.h"
 
 /**
- * add - adds two integers and returns the result 
+ * add - adds two integers and returns the result
+ *
+ * @n: first integer
+ * @m: second integer
  *
  * Return: the result
  */
