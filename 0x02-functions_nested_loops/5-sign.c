@@ -10,6 +10,6 @@
  */
 int print_sign(int n)
 {
-	_putchar((n > 0) ? '+' : (n < 0) ? '+' : '0');
+	_putchar((n > 0) ? '+' : (n < 0) ? '-' : '0');
 	return ((n > 0) ? 1 : (n < 0) ? -1 : 0);
 }
