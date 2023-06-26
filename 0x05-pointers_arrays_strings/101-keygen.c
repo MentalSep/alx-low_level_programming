@@ -11,26 +11,15 @@
  */
 int main(void)
 {
-	int sum = 0, n = 0, i = 0;
-	char str[100];
+	int total = 0;
+	char c;
 
 	srand(time(NULL));
-	while (sum < CHECKSUM)
+	for (; total <= 2695;)
 	{
-		if (CHECKSUM - sum < 48)
-			sum -= str[--i];
-		else if (CHECKSUM - sum <= 126)
-			n = CHECKSUM - sum;
-		else
-			n = rand() % (126 - 48) + 48;
-		if (n)
-		{
-			str[i++] = n;
-			sum += n;
-		}
-		n = 0;
+		c = rand() % (126 - 48) + '0';
+		total += c;
+		printf("%c", c);
 	}
-	str[i] = '\0';
-	printf("%s", str);
-	return (0);
+	printf("%c", (CHECKSUM - total));
 }
