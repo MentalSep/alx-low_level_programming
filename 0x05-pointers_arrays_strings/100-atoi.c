@@ -21,7 +21,7 @@ int _atoi(char *s)
 			while (*s >= '0' && *s <= '9')
 			{
 				n = (n * 10) + (*s - '0');
-				*s++;
+				s++;
 			}
 			break;
 		}
