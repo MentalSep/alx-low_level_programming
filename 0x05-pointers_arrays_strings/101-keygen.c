@@ -22,4 +22,5 @@ int main(void)
 		printf("%c", c);
 	}
 	printf("%c", (CHECKSUM - total));
+	return (0);
 }
