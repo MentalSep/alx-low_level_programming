@@ -58,6 +58,9 @@ char **strtow(char *str)
 		return (NULL);
 
 	NumWords = count_words(str);
+	if (!NumWords)
+		return (NULL);
+
 	arr = malloc(sizeof(*arr) * (NumWords + 1));
 	if (!arr)
 		return (NULL);
