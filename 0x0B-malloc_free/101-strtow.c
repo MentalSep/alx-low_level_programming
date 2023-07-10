@@ -54,7 +54,7 @@ char **strtow(char *str)
 	char **arr;
 	int i, j = 0, NumWords, start = 0, end;
 
-	if (!str || !*str)
+	if (!str || !str[0])
 		return (NULL);
 
 	NumWords = count_words(str);
