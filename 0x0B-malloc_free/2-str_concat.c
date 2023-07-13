@@ -18,10 +18,10 @@ char *str_concat(char *s1, char *s2)
 
 	for (len1 = 0; s1[len1]; len1++)
 		;
-	for (len2 = 0; s1[len2]; len2++)
+	for (len2 = 0; s2[len2]; len2++)
 		;
 
-	new = malloc(sizeof(*new) * (len1 + len2 + 2));
+	new = malloc(sizeof(*new) * (len1 + len2 + 1));
 	if (!new)
 		return (NULL);
 
