@@ -80,6 +80,7 @@ int main(int argc, char *argv[])
 		}
 	}
 	print_arr(result, len1 + len2);
+	free(result);
 
 	return (0);
 }
