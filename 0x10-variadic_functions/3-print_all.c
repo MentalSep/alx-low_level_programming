@@ -39,12 +39,7 @@ void print_string(va_list args)
 {
 	char *str = va_arg(args, char*);
 
-	if (!str)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", str);
+	printf("%s", str ? str : "(nil)");
 }
 /**
  * print_all - prints anything
