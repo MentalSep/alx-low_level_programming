@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * find_loop_ - find the node causing the loop
+ * find_loop - find the node causing the loop
  *
  * @head: head of the list
  *
