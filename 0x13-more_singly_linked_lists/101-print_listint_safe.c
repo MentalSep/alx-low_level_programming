@@ -2,7 +2,7 @@
 
 /**
  * find_loop_ - find the node causing the loop
- * 
+ *
  * @head: head of the list
  *
  * Return: address of the node causing the loop
@@ -49,6 +49,6 @@ size_t print_listint_safe(const listint_t *head)
 
 	if (holder)
 		printf("-> [%p] %d\n", (void *)head, head->n);
-	
+
 	return (nodes);
 }
