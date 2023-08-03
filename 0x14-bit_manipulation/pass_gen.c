@@ -18,5 +18,6 @@ int main(void)
 }
 unsigned int generate_password(int index)
 {
+	/* from decompiling crackme3 using dewolf */
     return ((unsigned int)(0x46c6f48 >> ((unsigned char)index << 3 & 0xff) & 0xff));
 }
