@@ -17,10 +17,10 @@ void printOS(Elf64_Ehdr *header)
 					"UNIX - Novell Modesto", "UNIX - OpenBSD",
 					"UNIX - Open VMS", "UNIX - NonStop Kernel",
 					"UNIX - AROS", "UNIX - Fenix OS",
-					"UNIX - CloudABI"};
+					"UNIX - CloudABI", "UNIX - OpenVOS"};
 
 	printf("  OS/ABI:                            ");
-	for (i = 0; i < 18; i++)
+	for (i = 0; i < 19; i++)
 		if (i == header->e_ident[7])
 		{
 			printf("%s\n", names[i]);
