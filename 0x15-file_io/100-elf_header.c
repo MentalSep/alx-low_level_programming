@@ -8,26 +8,28 @@
  */
 void printOS(Elf64_Ehdr *header)
 {
-	int i;
-	char *names[] = {"UNIX - System V", "UNIX - HP-UX",
-					"UNIX - NetBSD", "UNIX - Linux",
-					"UNIX - GNU Hurd", "", "UNIX - Solaris",
-					"UNIX - AIX", "UNIX - IRIX",
-					"UNIX - FreeBSD", "UNIX - Tru64",
-					"UNIX - Novell Modesto", "UNIX - OpenBSD",
-					"UNIX - Open VMS", "UNIX - NonStop Kernel",
-					"UNIX - AROS", "UNIX - Fenix OS",
-					"UNIX - CloudABI", "UNIX - OpenVOS"};
-
 	printf("  OS/ABI:                            ");
-	for (i = 0; i < 19; i++)
-		if (i == header->e_ident[7])
-		{
-			printf("%s\n", names[i]);
-			return;
-		}
 
-	printf("<uknown: %d>\n", header->e_ident[7]);
+	if (header->e_ident[EI_OSABI] == ELFOSABI_NONE)
+		printf("UNIX - System V\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_HPUX)
+		printf("UNIX - HP-UX\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_NETBSD)
+		printf("UNIX - NetBSD\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_LINUX)
+		printf("UNIX - Linux\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_SOLARIS)
+		printf("UNIX - Solaris\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_IRIX)
+		printf("UNIX - IRIX\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_FREEBSD)
+		printf("UNIX - FreeBSD\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_TRU64)
+		printf("UNIX - TRU64\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_ARM)
+		printf("ARM\n");
+	else if (header->e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
+		printf("Standalone App\n");
 
 }
 
