@@ -75,7 +75,7 @@ void printType(Elf64_Ehdr *header)
 {
 	printf("  Type:                              ");
 	if (header->e_type == 0)
-		printf("NONE (Unknown type)\n");
+		printf("NONE (None)\n");
 	else if (header->e_type == 1)
 		printf("REL (Relocatable file)\n");
 	else if (header->e_type == 2)
@@ -145,9 +145,10 @@ int main(int argc, char *argv[])
 	printf("\n");
 	printClass(header);
 	printData(header);
-	printf("  Version:                           %d%s",
-				header->e_ident[EI_VERSION], header->e_ident[EI_VERSION] == EV_CURRENT ?
-				" (current)\n" : "\n");
+	printf("  Version:                           %d",
+			header->e_ident[EI_VERSION]);
+	printf("%s", header->e_ident[EI_VERSION] == EV_CURRENT ?
+		" (current)\n" : "\n");
 	printOS(header);
 	printf("  ABI Version:                       %d\n",
 			header->e_ident[EI_ABIVERSION]);
