@@ -2,39 +2,6 @@
 #include <elf.h>
 
 /**
- * printClass - prints the class from an elf header
- *
- * @header: Elf64_Ehdr struct
- *
- * Return: void
- */
-void printClass(Elf64_Ehdr *header)
-{
-	printf("  Class:                             ");
-	if (header->e_ident[4] == 2)
-		printf("ELF64\n");
-	else if (header->e_ident[4] == 1)
-		printf("ELF32\n");
-}
-
-/**
- * printData - prints the information about data organization
- * from the elf header
- *
- * @header: Elf64_Ehdr struct
- *
- * Return: void
- */
-void printData(Elf64_Ehdr *header)
-{
-	printf("  Data:                              ");
-	if (header->e_ident[5] == 1)
-		printf("2's complement, little endian\n");
-	else if (header->e_ident[5] == 2)
-		printf("2's complement, big endian\n");
-}
-
-/**
  * printOS - prints name of the OS
  *
  * @header: Elf64_Ehdr struct
@@ -119,8 +86,11 @@ int main(int argc, char *argv[])
 	for (i = 0; i < 16; i++)
 		printf(" %02x", header->e_ident[i]);
 	printf("\n");
-	printClass(header);
-	printData(header);
+	printf("  Class:                             %s\n", header->e_ident[4] ==
+																			ELFCLASS64 ? "ELF64" : "ELF32");
+	printf("  Data:                              %s\n", header->e_ident[5] ==
+																			ELFDATA2MSB ? "2's complement, big endian" :
+																			"2's complement, little endian");
 	printf("  Version:                           %d (current)\n",
 																	header->e_ident[6]);
 	printOS(header);
