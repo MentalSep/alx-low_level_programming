@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]), exit(98);
 
 	printf("ELF Header:\n  Magic:  ");
-	for (i = 0; i < 16; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 		printf(" %02x", header->e_ident[i]);
 	printf("\n");
 	printf("  Class:                             %s\n", header->e_ident[4] ==
