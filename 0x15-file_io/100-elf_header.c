@@ -39,7 +39,9 @@ void printOS(Elf64_Ehdr *header)
 void printType(Elf64_Ehdr *header)
 {
 	printf("  Type:                              ");
-	if (header->e_type == 1)
+	if (header->e_type == 0)
+		printf("NONE (Unknown type)\n");
+	else if (header->e_type == 1)
 		printf("REL (Relocatable file)\n");
 	else if (header->e_type == 2)
 		printf("EXEC (Executable file)\n");
