@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 
 	if (read(fd, header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 		dprintf(STDERR_FILENO, "Error: can't read from file %s\n",
-																	argv[1]), exit(98);
+						argv[1]), exit(98);
 
 	if (header->e_ident[0] != 0x7f || header->e_ident[1] != 'E' ||
 		header->e_ident[2] != 'L' || header->e_ident[3] != 'F')
