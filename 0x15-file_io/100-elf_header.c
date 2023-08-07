@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
 	printClass(header);
 	printData(header);
 	printf("  Version:                           %d%s",
-				header->e_ident[6], header->e_ident[6] == EV_CURRENT ?
+				header->e_ident[EI_VERSION], header->e_ident[EI_VERSION] == EV_CURRENT ?
 				" (current)\n" : "\n");
 	printOS(header);
 	printf("  ABI Version:                       %d\n",
