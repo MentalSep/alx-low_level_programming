@@ -87,12 +87,12 @@ int main(int argc, char *argv[])
 		printf(" %02x", header->e_ident[i]);
 	printf("\n");
 	printf("  Class:                             %s\n", header->e_ident[4] ==
-																			ELFCLASS64 ? "ELF64" : "ELF32");
+				ELFCLASS64 ? "ELF64" : "ELF32");
 	printf("  Data:                              %s\n", header->e_ident[5] ==
-																			ELFDATA2MSB ? "2's complement, big endian" :
-																			"2's complement, little endian");
+				ELFDATA2MSB ? "2's complement, big endian" :
+				"2's complement, little endian");
 	printf("  Version:                           %d (current)\n",
-																	header->e_ident[6]);
+				header->e_ident[6]);
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
