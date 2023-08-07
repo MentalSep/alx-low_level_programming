@@ -139,9 +139,9 @@ int main(int argc, char *argv[])
 		header->e_ident[2] != 'L' || header->e_ident[3] != 'F')
 		dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]), exit(98);
 
-	printf("ELF Header:\n  Magic:  ");
+	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
-		printf(" %02x", header->e_ident[i]);
+		printf("%02x ", header->e_ident[i]);
 	printf("\n");
 	printClass(header);
 	printData(header);
