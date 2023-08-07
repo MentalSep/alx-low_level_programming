@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
-	printf("  Entry point address:               %#lx\n", header->e_entry);
+	printf("  Entry point address:               %#lx (bytes into file)\n", header->e_entry);
 	if (close(fd) == -1)
 		dprintf(STDERR_FILENO, "Error: can't close %s\n", argv[1]), exit(98);
 	free(header);
