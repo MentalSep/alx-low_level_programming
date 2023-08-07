@@ -35,7 +35,7 @@ void printData(Elf64_Ehdr *header)
 	else if (header->e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian\n");
 	else
-		printf("<unknown: %x>\n", header->e_ident[EI_CLASS]);
+		printf("<unknown: %x>\n", header->e_ident[EI_DATA]);
 }
 
 /**
@@ -79,6 +79,9 @@ void printOS(Elf64_Ehdr *header)
  */
 void printType(Elf64_Ehdr *header)
 {
+	if (header->e_ident[EI_DATA] == ELFDATA2MSB)
+		header->e_type >>= 8;
+
 	printf("  Type:                              ");
 	if (header->e_type == 0)
 		printf("NONE (None)\n");
