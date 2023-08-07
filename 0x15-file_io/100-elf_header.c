@@ -52,6 +52,29 @@ void printType(Elf64_Ehdr *header)
 	else if (header->e_type == 4)
 		printf("CORE (Core file)\n");
 }
+
+/**
+ * printEnry - Prints the entry point of an ELF header.
+ * @e_entry: The address of the ELF entry point.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
+void printEntry(Elf64_Ehdr *header)
+{
+	printf("  Entry point address:               ");
+
+	if (header->e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		header->e_entry = ((header->e_entry << 8) & 0xFF00FF00) |
+			  ((header->e_entry >> 8) & 0xFF00FF);
+		header->e_entry = (header->e_entry << 16) | (header->e_entry >> 16);
+	}
+
+	if (header->e_ident[EI_CLASS] == ELFCLASS32)
+		printf("%#x\n", (unsigned int)header->e_entry);
+
+	else
+		printf("%#lx\n", header->e_entry);
+}
 /**
  * main - displays the information contained in
  * the ELF header at the start of an ELF file.
@@ -98,7 +121,7 @@ int main(int argc, char *argv[])
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
-	printf("  Entry point address:               %#lx\n", header->e_entry);
+	printEntry(header);
 	if (close(fd) == -1)
 		dprintf(STDERR_FILENO, "Error: can't close %s\n", argv[1]), exit(98);
 	free(header);
