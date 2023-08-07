@@ -15,6 +15,8 @@ void printClass(Elf64_Ehdr *header)
 		printf("ELF32\n");
 	else if (header->e_ident[EI_CLASS] == ELFCLASS64)
 		printf("ELF64\n");
+	else
+		printf("<unknown: %x>\n", header->e_ident[EI_CLASS]);
 }
 
 /**
@@ -32,6 +34,8 @@ void printData(Elf64_Ehdr *header)
 		printf("2's complement, little endian\n");
 	else if (header->e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian\n");
+	else
+		printf("<unknown: %x>\n", header->e_ident[EI_DATA]);
 }
 
 /**
@@ -63,6 +67,8 @@ void printOS(Elf64_Ehdr *header)
 		printf("ARM\n");
 	else if (header->e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
 		printf("Standalone App\n");
+	else
+		printf("<unknown: %x>\n", header->e_ident[EI_OSABI]);
 
 }
 
@@ -84,6 +90,8 @@ void printType(Elf64_Ehdr *header)
 		printf("DYN (Shared object file)\n");
 	else if (header->e_type == 4)
 		printf("CORE (Core file)\n");
+	else
+		printf("<unknown: %x>\n", header->e_type);
 }
 
 /**
