@@ -54,9 +54,9 @@ void printType(Elf64_Ehdr *header)
 }
 
 /**
- * printEnry - Prints the entry point of an ELF header.
- * @e_entry: The address of the ELF entry point.
- * @e_ident: A pointer to an array containing the ELF class.
+ * printEntry - Prints the entry point of an ELF header.
+ *
+ * @header: Elf64_Ehdr struct
  */
 void printEntry(Elf64_Ehdr *header)
 {
