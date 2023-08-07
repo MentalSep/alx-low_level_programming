@@ -68,10 +68,10 @@ int main(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		dprintf(STDERR_FILENO, "Error: can't open file %s\n", argv[1]), exit(98);
-
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
 		dprintf(STDERR_FILENO, "Error: malloc fail\n"), exit(98);
+
 	if (read(fd, header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 		dprintf(STDERR_FILENO, "Error: can't read from file %s\n",
 																	argv[1]), exit(98);
@@ -94,9 +94,9 @@ int main(int argc, char *argv[])
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
-	printf("  Entry point address:               0x%lx\n", header->e_entry);
+	printf("Entry point address:                 %#lx\n", header->e_entry);
 	if (close(fd) == -1)
 		dprintf(STDERR_FILENO, "Error: can't close %s\n", argv[1]), exit(98);
-
+	free(header);
 	return (0);
 }
