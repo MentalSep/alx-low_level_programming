@@ -130,9 +130,9 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: can't open file %s\n", argv[1]), exit(98);
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
-		dprintf(STDERR_FILENO, "Error: malloc fail\n"), exit(98);
+		close(fd), dprintf(STDERR_FILENO, "Error: malloc fail\n"), exit(98);
 	if (read(fd, header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
-		dprintf(STDERR_FILENO, "Error: can't read from file %s\n",
+		close(fd), dprintf(STDERR_FILENO, "Error: can't read from file %s\n",
 						argv[1]), exit(98);
 
 	if (header->e_ident[0] != 0x7f || header->e_ident[1] != 'E' ||
