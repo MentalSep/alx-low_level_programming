@@ -91,8 +91,8 @@ int main(int argc, char *argv[])
 	printf("  Data:                              %s\n", header->e_ident[5] ==
 				ELFDATA2MSB ? "2's complement, big endian" :
 				"2's complement, little endian");
-	printf("  Version:                           %d (current)\n",
-				header->e_ident[6]);
+	printf("  Version:                           %d%s",
+				header->e_ident[6], header->e_ident[6] == EV_CURRENT ? " (current)\n" : "\n");
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
