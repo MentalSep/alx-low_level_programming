@@ -73,7 +73,6 @@ int main(int argc, char *argv[])
 	header = malloc(sizeof(Elf64_Ehdr));
 	if (!header)
 		dprintf(STDERR_FILENO, "Error: malloc fail\n"), exit(98);
-
 	if (read(fd, header, sizeof(Elf64_Ehdr)) != sizeof(Elf64_Ehdr))
 		dprintf(STDERR_FILENO, "Error: can't read from file %s\n",
 						argv[1]), exit(98);
@@ -92,7 +91,8 @@ int main(int argc, char *argv[])
 				ELFDATA2MSB ? "2's complement, big endian" :
 				"2's complement, little endian");
 	printf("  Version:                           %d%s",
-				header->e_ident[6], header->e_ident[6] == EV_CURRENT ? " (current)\n" : "\n");
+				header->e_ident[6], header->e_ident[6] == EV_CURRENT ?
+				" (current)\n" : "\n");
 	printOS(header);
 	printf("  ABI Version:                       %d\n", header->e_ident[8]);
 	printType(header);
