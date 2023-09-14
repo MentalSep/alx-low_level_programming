@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (1);
-	/*for future ref this is decompiler 'angr' dogbolt*/
+	/*for future ref this is from decompiler 'angr' dogbolt*/
 	len = strlen(username);
 	password[0] = string[(len ^ 59) & 63]; /* f1 */
 	password[1] = string[f3(username, len, 2)];
