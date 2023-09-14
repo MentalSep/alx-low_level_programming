@@ -3,51 +3,37 @@
 #include <string.h>
 
 /**
- * f1 - helper function
- * @len: username lentgh
- * Return: the calculated value
- */
-int f1(unsigned int len)
-{
-	return ((len ^ 59) & 63);
-}
-
-/**
- * f2 - helper function
- * @a0: username
- * @len: username lentgh
- * Return: the calculated value
- */
-int f2(char *a0, unsigned int len)
-{
-	unsigned int v0;
-	unsigned int v1;
-
-	v0 = 0;
-	for (v1 = 0; v1 < len; v1 += 1)
-	{
-		v0 += a0[v1];
-	}
-	return ((v0 ^ 79) & 63);
-}
-
-/**
  * f3 - helper function
  * @a0: username
  * @a1: username lentgh
+ * @type: type of function
  * Return: the calculated value
  */
-int f3(char *a0, unsigned int a1)
+int f3(char *a0, unsigned int a1, int type)
 {
 	unsigned int v0;
 	unsigned int v1;
 
-	v0 = 1;
-	for (v1 = 0; v1 < a1; v1 += 1)
+	/* ------------ f3 ---------------*/
+	if (type == 3)
 	{
-		v0 *= a0[v1];
+		v0 = 1;
+		for (v1 = 0; v1 < a1; v1 += 1)
+		{
+			v0 *= a0[v1];
+		}
+		return ((v0 ^ 85) & 63);
 	}
-	return ((v0 ^ 85) & 63);
+	/* ------------ f2 ---------------*/
+	else
+	{
+		v0 = 0;
+		for (v1 = 0; v1 < a1; v1 += 1)
+		{
+			v0 += a0[v1];
+		}
+		return ((v0 ^ 79) & 63);
+	}
 }
 
 /**
@@ -137,9 +123,9 @@ int main(int argc, char *argv[])
 		return (1);
 	/*for future ref this is decompiler 'angr' dogbolt*/
 	len = strlen(username);
-	password[0] = string[f1(len)];
-	password[1] = string[f2(username, len)];
-	password[2] = string[f3(username, len)];
+	password[0] = string[(len ^ 59) & 63]; /* f1 */
+	password[1] = string[f3(username, len, 2)];
+	password[2] = string[f3(username, len, 3)];
 	password[3] = string[f4(username, len)];
 	password[4] = string[f5(username, len)];
 	password[5] = string[f6(username[0])];
