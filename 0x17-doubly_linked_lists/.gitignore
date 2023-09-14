@@ -2,3 +2,5 @@ test.c
 a.out
 crackme5
 crackme4
+crackme4.pyc
+__paycache__
