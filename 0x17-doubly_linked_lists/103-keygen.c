@@ -14,7 +14,7 @@ int f3(char *a0, unsigned int a1, int type)
 	unsigned int v0;
 	unsigned int v1;
 
-	/* ------------ f3 ---------------*/
+	/* ------------ f3 --------------- */
 	if (type == 3)
 	{
 		v0 = 1;
@@ -24,7 +24,7 @@ int f3(char *a0, unsigned int a1, int type)
 		}
 		return ((v0 ^ 85) & 63);
 	}
-	/* ------------ f2 ---------------*/
+	/* ------------ f2 --------------- */
 	else
 	{
 		v0 = 0;
@@ -75,7 +75,6 @@ int f5(char *a0, unsigned int a1)
 	{
 		v0 += a0[v1] * a0[v1];
 	}
-	v3 = v0;
 	*((char *)&v3) = (char)v0 ^ 239;
 	v4 = v3 & 63;
 	return (v4);
@@ -98,7 +97,6 @@ int f6(unsigned int a0)
 	{
 		v0 = rand();
 	}
-	v3 = v0;
 	*((char *)&v3) = (char)v0 ^ 229;
 	v4 = v3 & 63;
 	return (v4);
@@ -121,7 +119,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (1);
-	/*for future ref this is from decompiler 'angr' dogbolt*/
+	/*for future ref this was done with the help of decompiler 'angr' dogbolt*/
 	len = strlen(username);
 	password[0] = string[(len ^ 59) & 63]; /* f1 */
 	password[1] = string[f3(username, len, 2)];
