@@ -74,11 +74,18 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	node->next = ht->array[index];
 	ht->array[index] = node;
 
-	sort_ht(ht, node, key);
+	insertNode(ht, node, key);
 	return (1);
 }
 
-void sort_ht(shash_table_t *ht, shash_node_t *node, const char *key)
+/**
+ * insertNode - inserts a node into a sorted hash table
+ * @ht: hash table to insert node into
+ * @node: node to insert
+ * @key: key of the node
+ * Return: void
+ */
+void insertNode(shash_table_t *ht, shash_node_t *node, const char *key)
 {
 	shash_node_t *tmp;
 
