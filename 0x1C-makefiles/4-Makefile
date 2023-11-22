@@ -5,8 +5,11 @@ NAME = school
 RM = rm -f
 CFLASGS = -Wall -Werror -Wextra -pedantic
 
+%.o: %.c
+	$(CC) $(CFLASGS) -c $< -o $@
+
 all: $(OBJ)
-	$(CC) $(CFLASGS) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) *~ $(NAME)
