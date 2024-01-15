@@ -16,6 +16,7 @@ void print_array(int *array, size_t left, size_t right)
 		printf("%d%s", array[i], i < right ? ", " : "\n");
 
 }
+
 /**
  * binary_search - searches for a value in a sorted array of integers
  * using the Binary search algorithm
@@ -43,14 +44,12 @@ int binary_search(int *array, size_t size, int value)
 		else if (array[mid] > value)
 		{
 			right = mid - 1;
-
 			if (left <= right)
 				print_array(array, 0, right);
 		}
 		else
 		{
 			left = mid + 1;
-
 			if (left <= right)
 				print_array(array, left, right);
 		}
