@@ -7,14 +7,16 @@
  * @right: the end index
  *
 */
-void print_array(int *array, size_t left, size_t right)
+void print_array(int *array, int left, int right)
 {
-	size_t i;
+	int i;
 
+	if (left <= right)
+	{
 	printf("Searching in array: ");
 	for (i = left; i <= right; i++)
 		printf("%d%s", array[i], i < right ? ", " : "\n");
-
+	}
 }
 
 /**
@@ -28,7 +30,7 @@ void print_array(int *array, size_t left, size_t right)
 */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0, right = size - 1, mid;
+	int left = 0, right = size - 1, mid;
 
 	if (!array)
 		return (-1);
@@ -44,14 +46,12 @@ int binary_search(int *array, size_t size, int value)
 		else if (array[mid] > value)
 		{
 			right = mid - 1;
-			if (left <= right)
-				print_array(array, 0, right);
+			print_array(array, 0, right);
 		}
 		else
 		{
 			left = mid + 1;
-			if (left <= right)
-				print_array(array, left, right);
+			print_array(array, left, right);
 		}
 	}
 	return (-1);
